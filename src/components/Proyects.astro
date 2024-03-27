@@ -1,0 +1,30 @@
+---
+import { Logger } from "astro/dist/core/logger/core";
+
+const PROYECTS = [
+    {
+        title: 'Poncho Home & Stay ',
+        description: 'Proyecto fullstack integrador, realizado grupalmente para la materia de Desarrollo de Software de la carrera de Ingenieria en Sistemas. Proyecto Realizado en Angular en frontEnd y Node.Js en el Bacl y se utilizo Mongoose como bd y Tailwind CSS para los estilos',
+        link: 'https://poncho-home-and-stay.vercel.app/home',
+        github: 'https://github.com/francoax/dsw-app',
+        image: '/proyects/Poncho.webp',
+        tags:['Angular','Node.Js','Mongoose','Tailwind CSS']
+    }
+]
+
+---
+
+{
+    PROYECTS.map(proyect =>(
+        <article>
+            <h3>{proyect.title}</h3>
+            <p>{proyect.description}</p>
+            <ul>
+                {proyect.tags.map(tag => (
+                    <li>{tag}</li>
+                ))}    
+            </ul>
+            <img src={proyect.image} alt="Captura de pantalla del proyecto">
+        </article>
+    ) )
+}
