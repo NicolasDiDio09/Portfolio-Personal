@@ -1,4 +1,31 @@
 ---
+import Angular from './icons/Angular.astro'
+import NodeJs from '../components/icons/NodeJs.astro'
+import Mongo from './icons/MongoDb.astro'
+import Tailwind from './icons/Tailwind.astro'
+
+const TAGS = {
+    ANGULAR : {
+        name: "Angular",
+        class: "bg-black text-white",
+        icon: Angular,
+    },
+    NODEJS : {
+        name: "Node.Js",
+        class: "bg-black text-white",
+        icon: NodeJs,
+    },
+    MONGO : {
+        name: "MongoDb",
+        class: "bg-black text-white",
+        icon: Mongo,
+    },
+    TAILWIND : {
+        name: "Tailwind",
+        class: "bg-black text-white",
+        icon: Tailwind,
+    }
+}
 const PROYECTS = [
     {
         title: 'Poncho Home & Stay ',
@@ -6,7 +33,7 @@ const PROYECTS = [
         link: 'https://poncho-home-and-stay.vercel.app/home',
         github: 'https://github.com/francoax/dsw-app',
         image: '/proyects/Poncho.webp',
-        tags:['Angular','Node.Js','Mongoose','Tailwind CSS']
+        tags:[TAGS.ANGULAR,TAGS.NODEJS,TAGS.MONGO,TAGS.TAILWIND]
     }
 ]
 
@@ -15,14 +42,19 @@ const PROYECTS = [
 {
     PROYECTS.map(proyect =>(
         <article>
-            <h3>{proyect.title}</h3>
-            <p>{proyect.description}</p>
-            <ul>
+            <h3 class="text-2xl font-semibold text-yellow-200 mb-2" >{proyect.title}</h3>
+            <p class="text-lg mb-4 text-pretty" >{proyect.description}</p>
+            <ul class="flex gap-x-4 flex-row">
                 {proyect.tags.map(tag => (
-                    <li>{tag}</li>
+                    <li>
+                        <span class={`flex gap-x-2 rounded-full text-xs ${tag.class}`}>
+                            <tag.icon class="size-4"/>
+                            {tag.name}
+                        </span>    
+                    </li>
                 ))}    
             </ul>
-            <img src={proyect.image} alt="Captura de pantalla del proyecto">
+            <img class="rounded shadow-white/20" src={proyect.image} alt="Captura de pantalla del proyecto">
         </article>
     ) )
 }
