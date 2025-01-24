@@ -4,8 +4,12 @@
 
   // Función para manejar el scroll
   const handleScroll = () => {
-    const currentScroll = window.pageYOffset;
+    const currentScroll = window.scrollY;
     const header = document.querySelector('header');
+    if (header) {
+        header.addEventListener('mouseenter', handleMouseEnter);
+        }
+
 
     if (currentScroll > lastScroll) {
       // Usuario se desplaza hacia abajo: oculta el header
@@ -13,7 +17,9 @@
       headerVisible = false;
     } else {
       // Usuario se desplaza hacia arriba: muestra el header
-      header.classList.remove('-translate-y-full', 'opacity-0');
+      if (header) {
+        header.classList.remove('-translate-y-full', 'opacity-0');
+        }
       headerVisible = true;
     }
 
