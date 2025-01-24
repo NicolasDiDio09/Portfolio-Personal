@@ -18,7 +18,7 @@ import { Code } from 'astro:components';
 	title="Portfolio de Nicolas Di Dio - Desarrollador y Programador"
 	description="Estudiante de Ingenieria en Sistemas y entusiasta del desarrollo de sistemas">
 	<main class="px-4">
-		<SectionContainer class="py-44 pb-32 ">
+		<SectionContainer class="py-44 pb-32 " id="About">
 			<img 
 			class="rounded-full w-12 h-12"
 			src="/foto prueba portafolio.jpg" 
@@ -26,19 +26,19 @@ import { Code } from 'astro:components';
 		>	
 			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pt-2 pb-6 lg:pb-10">
 				Hola, soy Nicolas Di Dio 
-				<a href="https://www.instagram.com/nicodidio/"
+				<a href="https://www.linkedin.com/in/fernando-nicolas-di-dio-646313348/"
 					target="_blank"
 				rel="noopener"
 					class="flex justify-center items-center">
 					<Badge>Disponible para trabajar</Badge>
 				</a>
 			</h1>
-			<h2 class=" text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">Soy estudiante de la carrera de Ingenieria en sistemas de Informacion en la UTN de Rosario.
-				Soy apasionado por el mundo del desarollo y <span class="text-yellow-200/90">poseo conociemientos en desarrollo de software full-stack.</span>
+			<h2 class=" text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">Soy estudiante de 5to año de la carrera de Ingenieria en sistemas de Informacion en la UTN de Rosario.
+				Soy apasionado por el mundo del desarollo y <span class="text-yellow-200/90">poseo conocimientos en desarrollo de proyectos de software full-stack, ademas de experiencia en administracion y manejo de bases de datos y experiencia en tareas de Analista en Sistemas.</span>
 			</h2>
 			<ul class="flex gap-4 mt-8 flex-wrap">
 				<li>
-					<SocialPill>
+					<SocialPill href="https://www.linkedin.com/in/fernando-nicolas-di-dio-646313348/">
 						<LinkedIn class="size-4 md:size-6" />
 						LinkedIn 
 					</SocialPill>
@@ -57,23 +57,20 @@ import { Code } from 'astro:components';
 				</li>
 			</ul>
 		</SectionContainer>
-		<SectionContainer id="experience">
+		<SectionContainer id="Experience">
 				<h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
 					<Briefcase class=" size-7" />
 					Experiencia laboral
 				</h2>
-				<p class="text-base text-wrap">
-				   No poseo por el momento experiencia laboral ya que continuo estudiando y capacitandome tanto facultativamente
-				   extrafacultativamente y la experiencia que dispongo es de desarrollos de sistemas y proyectos integrales 
-				   para materias de la facultad con tecnologias actuales y ademas de proyectos personales a modo de practica y aprendisaje.
-				   
-				   
-				</p>
+				<h2 class=" text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
+				No poseo, por el momento experiencia laboral, me estuve dedicando a avanzar en la carrera y capacitándome mediante cursos por fuera de la facultad.
+				La experiencia que tengo proviene de desarrollos de sistemas y proyectos integrales realizados para materias de la facultad con tecnologías actuales (realizando tareas de analista y desarrollando tanto backend como front), además de proyectos personales que utilizo como práctica y aprendizaje
+				</h2>
 		</SectionContainer>
-		<SectionContainer id="proyects" >
+		<SectionContainer id="Projects">
 			<h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
 				<CodeIcon class=" size-7" />
-				Proyects
+				Projects
 			</h2>
 			<Proyects />
 		</SectionContainer>
