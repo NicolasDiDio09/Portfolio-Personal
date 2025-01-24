@@ -4,22 +4,18 @@
 
   // Función para manejar el scroll
   const handleScroll = () => {
+    const header = document.querySelector('header'); // Selecciona el header solo una vez
+    if (!header) return; // Asegúrate de que el elemento existe antes de manipularlo
+
     const currentScroll = window.scrollY;
-    const header = document.querySelector('header');
-    if (header) {
-        header.addEventListener('mouseenter', handleMouseEnter);
-        }
 
-
-    if (currentScroll > lastScroll) {
+    if (currentScroll > lastScroll && headerVisible) {
       // Usuario se desplaza hacia abajo: oculta el header
       header.classList.add('-translate-y-full', 'opacity-0');
       headerVisible = false;
-    } else {
+    } else if (currentScroll < lastScroll && !headerVisible) {
       // Usuario se desplaza hacia arriba: muestra el header
-      if (header) {
-        header.classList.remove('-translate-y-full', 'opacity-0');
-        }
+      header.classList.remove('-translate-y-full', 'opacity-0');
       headerVisible = true;
     }
 
@@ -28,16 +24,20 @@
 
   // Mostrar el header al hacer hover
   const handleMouseEnter = () => {
-    const header = document.querySelector('header');
-    if (!headerVisible) {
+    const header = document.querySelector('header'); // Selecciona el header solo una vez
+    if (header && !headerVisible) {
       header.classList.remove('-translate-y-full', 'opacity-0');
     }
   };
 
   // Escuchar eventos después de que la página cargue
   if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', handleScroll);
-    document.querySelector('header').addEventListener('mouseenter', handleMouseEnter);
+    const header = document.querySelector('header'); // Selecciona el header una vez
+    if (header) {
+      // Solo registra los eventos si el elemento existe
+      window.addEventListener('scroll', handleScroll);
+      header.addEventListener('mouseenter', handleMouseEnter);
+    }
   }
 </script>
 
@@ -51,4 +51,3 @@
     <a href="#Contact" class="hover:text-yellow-400">Contact</a>
   </nav>
 </header>
-
