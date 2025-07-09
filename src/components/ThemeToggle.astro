@@ -1,0 +1,77 @@
+---
+import Sun from './icons/Sun.astro';
+import Moon from './icons/Moon.astro';
+import System from './icons/System.astro';
+
+const theme = typeof window !== 'undefined' ? localStorage.getItem('theme') || 'system' : 'system';
+---
+
+<script is:inline>
+  if (typeof window !== 'undefined') {
+    const root = document.documentElement;
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const applyTheme = (theme) => {
+      if (theme === 'dark' || (theme === 'system' && systemPrefersDark)) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      localStorage.setItem('theme', theme);
+      const icon = document.getElementById('theme-toggle-icon');
+      icon.innerHTML = theme === 'dark'
+        ? document.querySelector('template[data-icon="moon"]').innerHTML
+        : theme === 'light'
+          ? document.querySelector('template[data-icon="sun"]').innerHTML
+          : document.querySelector('template[data-icon="system"]').innerHTML;
+    };
+
+    window.setTheme = (theme) => {
+      applyTheme(theme);
+      document.getElementById('theme-menu').classList.add('hidden');
+    };
+
+    document.addEventListener('DOMContentLoaded', () => applyTheme(localStorage.getItem('theme') || 'system'));
+  }
+</script>
+
+<div class="relative inline-block text-left">
+  <!-- Toggle Button -->
+  <button
+    class="p-2 border rounded focus:outline-none"
+    onclick="document.getElementById('theme-menu').classList.toggle('hidden')"
+  >
+    <span id="theme-toggle-icon">
+      {theme === 'dark' ? <Moon /> : theme === 'light' ? <Sun /> : <System />}
+    </span>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    id="theme-menu"
+    class="absolute right-0 mt-2 w-28 origin-top-right rounded-md bg-neutral-900 shadow-lg ring-1 ring-black ring-opacity-5 hidden"
+  >
+    <ul class="py-1 text-sm text-white">
+      <li>
+        <button class="w-full px-4 py-2 text-left hover:bg-neutral-800" onclick="setTheme('light')">Light</button>
+      </li>
+      <li>
+        <button class="w-full px-4 py-2 text-left hover:bg-neutral-800" onclick="setTheme('dark')">Dark</button>
+      </li>
+      <li>
+        <button class="w-full px-4 py-2 text-left hover:bg-neutral-800" onclick="setTheme('system')">System</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Icon templates -->
+<template data-icon="sun">
+  <Sun />
+</template>
+<template data-icon="moon">
+  <Moon />
+</template>
+<template data-icon="system">
+  <System />
+</template>

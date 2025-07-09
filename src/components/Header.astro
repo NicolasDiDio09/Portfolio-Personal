@@ -1,53 +1,61 @@
-<script>
-  let lastScroll = 0;
-  let headerVisible = true;
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
 
-  // Función para manejar el scroll
-  const handleScroll = () => {
-    const header = document.querySelector('header'); // Selecciona el header solo una vez
-    if (!header) return; // Asegúrate de que el elemento existe antes de manipularlo
-
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > lastScroll && headerVisible) {
-      // Usuario se desplaza hacia abajo: oculta el header
-      header.classList.add('-translate-y-full', 'opacity-0');
-      headerVisible = false;
-    } else if (currentScroll < lastScroll && !headerVisible) {
-      // Usuario se desplaza hacia arriba: muestra el header
-      header.classList.remove('-translate-y-full', 'opacity-0');
-      headerVisible = true;
-    }
-
-    lastScroll = currentScroll;
-  };
-
-  // Mostrar el header al hacer hover
-  const handleMouseEnter = () => {
-    const header = document.querySelector('header'); // Selecciona el header solo una vez
-    if (header && !headerVisible) {
-      header.classList.remove('-translate-y-full', 'opacity-0');
-    }
-  };
-
-  // Escuchar eventos después de que la página cargue
-  if (typeof window !== 'undefined') {
-    const header = document.querySelector('header'); // Selecciona el header una vez
-    if (header) {
-      // Solo registra los eventos si el elemento existe
-      window.addEventListener('scroll', handleScroll);
-      header.addEventListener('mouseenter', handleMouseEnter);
-    }
-  }
-</script>
-
-<header
-  class="fixed top-0 z-10 w-full flex items-center justify-center bg-transparent transition-transform duration-300 ease-in-out">
-  <nav class="flex px-5 py-2 text-sm gap-x-6 font-medium text-white">
+<header id="navbar" class="fixed top-4 left-1/2 z-50 w-fit -translate-x-1/2 text-sm font-medium transition-all duration-300">
+  <nav id="navContent" class="flex gap-x-6 items-center text-white dark:text-gray-200">
     <a href="#Top" class="hover:text-yellow-400">Home</a>
     <a href="#About" class="hover:text-yellow-400">About</a>
     <a href="#Experience" class="hover:text-yellow-400">Experience</a>
     <a href="#Projects" class="hover:text-yellow-400">Projects</a>
     <a href="#Contact" class="hover:text-yellow-400">Contact</a>
+    <ThemeToggle />
   </nav>
 </header>
+
+<script is:inline>
+  const navbar = document.getElementById('navbar');
+  const navContent = document.getElementById('navContent');
+
+  let lastScroll = 0;
+
+  const applyScrolledStyles = () => {
+    navContent.classList.add(
+      'rounded-full',
+      'backdrop-blur-sm',
+      'border',
+      'border-white/10',
+      'bg-black/20',
+      'px-5',
+      'py-2',
+      'shadow-md',
+      'dark:bg-white/10'
+    );
+  };
+
+  const removeScrolledStyles = () => {
+    navContent.classList.remove(
+      'rounded-full',
+      'backdrop-blur-sm',
+      'border',
+      'border-white/10',
+      'bg-black/20',
+      'px-5',
+      'py-2',
+      'shadow-md',
+      'dark:bg-white/10'
+    );
+  };
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 50) {
+      applyScrolledStyles();
+    } else {
+      removeScrolledStyles();
+    }
+
+    lastScroll = currentScroll;
+  });
+</script>

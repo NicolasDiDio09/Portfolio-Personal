@@ -3,6 +3,9 @@ import Angular from './icons/Angular.astro'
 import NodeJs from '../components/icons/NodeJs.astro'
 import Mongo from './icons/MongoDb.astro'
 import Tailwind from './icons/Tailwind.astro'
+import SocialPill from './SocialPill.astro';
+
+
 
 const TAGS = {
     ANGULAR : {
@@ -26,10 +29,10 @@ const TAGS = {
         icon: Tailwind,
     }
 }
-const PROYECTS = [
+const PROJECTS = [
     {
         title: 'Poncho Home & Stay ',
-        description: 'Proyecto fullstack integrador, realizado grupalmente para la materia de Desarrollo de Software de la carrera de Ingenieria en Sistemas. Proyecto Realizado en Angular en frontEnd y Node.Js en el Bacl y se utilizo Mongoose como bd y Tailwind CSS para los estilos',
+        description: 'Proyecto full stack integrador, desarrollado en grupo para la materia de Desarrollo de Software de la carrera de Ingeniería en Sistemas. La aplicación fue construida utilizando Angular para el frontend y Node.js para el backend. Se empleó MongoDB como base de datos y Tailwind CSS para los estilos.',
         link: 'https://poncho-home-and-stay.vercel.app/home',
         github: 'https://github.com/francoax/dsw-app',
         image: '/proyects/Poncho.webp',
@@ -40,21 +43,21 @@ const PROYECTS = [
 ---
 
 {
-    PROYECTS.map(proyect =>(
+    PROJECTS.map(proyect =>(
         <article>
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2" >{proyect.title}</h3>
-            <p class="text-lg mb-4 text-pretty" >{proyect.description}</p>
+            <p class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px] mb-6">{proyect.description}</p>
             <ul class="flex gap-x-4 flex-row">
                 {proyect.tags.map(tag => (
                     <li>
-                        <span class={`flex gap-x-2 rounded-full text-xs ${tag.class}`}>
-                            <tag.icon class="size-4"/>
-                            {tag.name}
-                        </span>    
+                    <SocialPill>
+                        <tag.icon class="size-4 md:size-6" />
+                        {tag.name}
+                    </SocialPill>
                     </li>
                 ))}    
             </ul>
-            <img class="rounded shadow-white/20" src={proyect.image} alt="Captura de pantalla del proyecto">
+            <img class="rounded shadow-white/20 mt-6 " src={proyect.image} alt="Captura de pantalla del proyecto">
         </article>
     ) )
 }

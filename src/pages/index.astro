@@ -6,82 +6,49 @@ import LinkedIn from '../components/icons/LinkedIn.astro';
 import SocialPill from '../components/SocialPill.astro';
 import GitHubIcon from '../components/icons/GitHub.astro';
 import MailIcon from '../components/icons/Mail.astro';
-import SectionContainer from '../components/SectionContainer.astro'
+import AboutMeV2 from '../components/AboutMe.astro';
+import SectionContainer from '../components/SectionContainer.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro';
-import Proyects from '../components/Proyects.astro';
+import Projects from '../components/Projects.astro';
 import { Code } from 'astro:components';
 import cvIcon from '../components/Cv.astro';
-
-
 ---
 
 <Layout 
-	title="Portfolio de Nicolas Di Dio - Desarrollador y Programador"
-	description="Estudiante de Ingenieria en Sistemas y entusiasta del desarrollo de sistemas">
-	<main class="px-4">
-		<SectionContainer class="py-44 pb-32 " id="About">
-			<img 
-			class="rounded-full w-12 h-12"
-			src="/foto prueba portafolio.jpg" 
-			alt="foto de perfil"
-		>	
-			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pt-2 pb-6 lg:pb-10">
-				Hola, soy Nicolas Di Dio 
-				<a href="https://www.linkedin.com/in/fernando-nicolas-di-dio-646313348/"
-					target="_blank"
-				rel="noopener"
-					class="flex justify-center items-center">
-					<Badge>Disponible para trabajar</Badge>
-				</a>
-			</h1>
-			<h2 class=" text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">Soy estudiante de 5to año de la carrera de Ingenieria en sistemas de Informacion en la UTN de Rosario.
-				Soy apasionado por el mundo del desarrollo y <span class="text-yellow-200/90">poseo conocimientos en desarrollo de proyectos de software full-stack, ademas de experiencia en administracion y manejo de bases de datos y experiencia en tareas de Analista en Sistemas.</span>
-			</h2>
-			<ul class="flex gap-4 mt-8 flex-wrap">
-				<li>
-					<SocialPill href="https://www.linkedin.com/in/fernando-nicolas-di-dio-646313348/">
-						<LinkedIn class="size-4 md:size-6" />
-						LinkedIn 
-					</SocialPill>
-				</li>
-				<li>
-					<SocialPill href="https://github.com/NicolasDiDio09">
-						<GitHubIcon class="size-4 md:size-6" />
-						GitHub
-					</SocialPill>
-				</li> 
-				<li>
-					<SocialPill href="mailto:NicolasDiDio09@gmail.com">
-						<MailIcon class="size-4 md:size-6" />
-						Contacto
-					</SocialPill>
-				</li>
-				<li>
-					<SocialPill href="https://drive.google.com/drive/folders/1XiD-Ctp-vbqv-0Y9IJuZ74GfziSDl9xb?usp=sharing">
-						Curriculum
-					</SocialPill>
-				</li>
-			</ul>
-		</SectionContainer>
-		<SectionContainer id="Experience">
-				<h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
-					<Briefcase class=" size-7" />
-					Experiencia laboral
-				</h2>
-				<h2 class=" text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
-				No poseo, por el momento experiencia laboral, me estuve dedicando a avanzar en la carrera y capacitándome mediante cursos por fuera de la facultad.
-				La experiencia que tengo proviene de desarrollos de sistemas y proyectos integrales realizados para materias de la facultad con tecnologías actuales (realizando tareas de analista y desarrollando tanto backend como front), además de proyectos personales que utilizo como práctica y aprendizaje
-				</h2>
-		</SectionContainer>
-		<SectionContainer id="Projects">
-			<h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
-				<CodeIcon class=" size-7" />
-				Projects
-			</h2>
-			<Proyects />
-		</SectionContainer>
-	</main>
+  title="Portfolio de Nicolas Di Dio - Desarrollador y Programador"
+  description="Estudiante de Ingenieria en Sistemas y entusiasta del desarrollo de software"
+>
+  <main class="px-4">
+
+    <!-- Presentación -->
+    <SectionContainer class="py-10 md:py-14">
+      <AboutMeV2>
+        </slot>
+      </AboutMeV2>
+    </SectionContainer>
+
+    <!-- Experiencia -->
+    <SectionContainer id="Experience" class="py-8 md:py-12">
+      <h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
+        <Briefcase class="size-7" />
+        Experiencia laboral
+      </h2>
+      <h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
+        Actualmente no cuento con experiencia laboral formal, ya que he estado enfocado en avanzar en mi formación académica y profesional a través de la carrera y diversos cursos complementarios.
+        Mi experiencia se basa en el desarrollo de sistemas y proyectos integradores realizados para materias de la facultad, utilizando tecnologías actuales. En estos proyectos he desempeñado roles tanto de analista como de desarrollador (frontend y backend).
+        Además, desarrollo proyectos personales que utilizo como instancia de práctica, aprendizaje y mejora continua.
+      </h2>
+    </SectionContainer>
+
+    <!-- Proyectos -->
+    <SectionContainer id="Projects" class="py-10 md:py-14">
+      <h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
+        <CodeIcon class="size-7" />
+        Projects
+      </h2>
+      <Projects />
+    </SectionContainer>
+
+  </main>
 </Layout>
-
-
