@@ -1,62 +1,77 @@
 ---
+// Header.astro
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header id="navbar" class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
-  <nav id="navContent" 
-           class="flex gap-3 md:gap-5 px-4 md:px-6 text-sm font-medium text-gray-600 dark:text-gray-200 justify-center items-center rounded-full">
-    <a href="#Top" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Home</a>
-    <a href="#About" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">About</a>
-    <a href="#Experience" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Experience</a>
-    <a href="#Projects" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Projects</a>
-    <a href="#Contact" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Contact</a>
+<header id="navbar" class="fixed top-0 z-10 w-full flex justify-center px-4 sm:px-6 mt-2 bg-transparent">
+  <nav id="navContent"
+    class="flex items-center justify-center flex-nowrap 
+           gap-2 sm:gap-4 md:gap-5 
+           px-3 sm:px-4 md:px-6 py-1 
+           text-[13px] sm:text-[14px] font-medium 
+           text-gray-600 dark:text-gray-200 
+           transition-all duration-300 ease-in-out">
+    <a href="#Top" class="px-2 py-1 hover:text-yellow-400 dark:hover:text-yellow-300">Home</a>
+    <a href="#About" class="px-2 py-1 hover:text-yellow-400 dark:hover:text-yellow-300">About</a>
+    <a href="#Experience" class="px-2 py-1 hover:text-yellow-400 dark:hover:text-yellow-300">Experience</a>
+    <a href="#Projects" class="px-2 py-1 hover:text-yellow-400 dark:hover:text-yellow-300">Projects</a>
+    <a href="#Contact" class="px-2 py-1 hover:text-yellow-400 dark:hover:text-yellow-300">Contact</a>
     <ThemeToggle />
   </nav>
 </header>
 
-<script is:inline>
-  const navbar = document.getElementById('navbar');
-  const navContent = document.getElementById('navContent');
+<style is:global>
+  /* Previene que se rompa en mobile pero SIN barra de desplazamiento */
+  #navContent {
+    flex-wrap: nowrap;
+  }
 
-  let lastScroll = 0;
+  @media (max-width: 400px) {
+    #navContent {
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    #navContent a,
+    #navContent button {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+</style>
+
+<script is:inline>
+  const navContent = document.getElementById('navContent');
 
   const applyScrolledStyles = () => {
     navContent.classList.add(
       'rounded-full',
-      'backdrop-blur-sm',
-      'border',
-      'border-white/10',
-      'bg-black/20',
-      'px-5',
-      'py-2',
+      'backdrop-blur-md',
+      'bg-black/30',
+      'dark:bg-white/10',
       'shadow-md',
-      'dark:bg-white/10'
+      'px-4',
+      'py-2'
     );
   };
 
   const removeScrolledStyles = () => {
     navContent.classList.remove(
       'rounded-full',
-      'backdrop-blur-sm',
-      'border',
-      'border-white/10',
-      'bg-black/20',
-      'px-5',
-      'py-2',
+      'backdrop-blur-md',
+      'bg-black/30',
+      'dark:bg-white/10',
       'shadow-md',
-      'dark:bg-white/10'
+      'px-4',
+      'py-2'
     );
   };
 
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 50) {
+    if (window.scrollY > 30) {
       applyScrolledStyles();
     } else {
       removeScrolledStyles();
     }
-
-    lastScroll = currentScroll;
   });
 </script>

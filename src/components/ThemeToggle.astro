@@ -38,7 +38,7 @@ const theme = typeof window !== 'undefined' ? localStorage.getItem('theme') || '
 <div class="relative inline-block text-left">
   <!-- Toggle Button -->
   <button
-    class="p-2 border rounded focus:outline-none"
+    class="w-8 h-8 flex items-center justify-center rounded-md border border-white/30 transition hover:scale-105"
     onclick="document.getElementById('theme-menu').classList.toggle('hidden')"
   >
     <span id="theme-toggle-icon">
