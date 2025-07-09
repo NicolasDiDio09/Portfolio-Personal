@@ -22,8 +22,14 @@ import '@fontsource-variable/onest';
 		
 		<script src="/theme.js" is:inline></script>
 	</head>
-	<body>
-		<div class="fixed top-0 left-0 z-[-2] min-h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+	<body class="relative text-black dark:text-white">
+    <div
+      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full 
+        bg-gray-50 dark:bg-gray-950
+        bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+        dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+    </div>
 		<Header />
 		<slot />
 	</body>
@@ -39,12 +45,10 @@ import '@fontsource-variable/onest';
     scroll-behavior: smooth;
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    transition: background 0.3s, color 0.3s;
-  }
+ body {
+  color: rgba(17, 17, 17, 0.9);
+  background: #f9f9fb;
+}
 
   /* 🎯 Modo claro (sin .dark) */
   html:not(.dark) body {
@@ -52,11 +56,10 @@ import '@fontsource-variable/onest';
     color: #1e1e1e;       /* Texto oscuro */
   }
 
-  /* 🌙 Modo oscuro */
-  .dark body {
-    background: #050505;
-    color: #ffffff;
-  }
+ .dark body {
+  background: #050505;
+  color: rgba(255, 255, 255, 0.9);
+}
 
   @media (prefers-reduced-motion: reduce) {
     html {

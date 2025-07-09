@@ -2,13 +2,14 @@
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header id="navbar" class="fixed top-4 left-1/2 z-50 w-fit -translate-x-1/2 text-sm font-medium transition-all duration-300">
-  <nav id="navContent" class="flex gap-x-6 items-center text-white dark:text-gray-200">
-    <a href="#Top" class="hover:text-yellow-400">Home</a>
-    <a href="#About" class="hover:text-yellow-400">About</a>
-    <a href="#Experience" class="hover:text-yellow-400">Experience</a>
-    <a href="#Projects" class="hover:text-yellow-400">Projects</a>
-    <a href="#Contact" class="hover:text-yellow-400">Contact</a>
+<header id="navbar" class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+  <nav id="navContent" 
+           class="flex gap-3 md:gap-5 px-4 md:px-6 text-sm font-medium text-gray-600 dark:text-gray-200 justify-center items-center rounded-full"">
+    <a href="#Top" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Home</a>
+    <a href="#About" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">About</a>
+    <a href="#Experience" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Experience</a>
+    <a href="#Projects" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Projects</a>
+    <a href="#Contact" class="block px-3 py-2 transition hover:text-yellow-400 dark:hover:text-yellow-300">Contact</a>
     <ThemeToggle />
   </nav>
 </header>
