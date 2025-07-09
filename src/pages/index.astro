@@ -6,7 +6,7 @@ import LinkedIn from '../components/icons/LinkedIn.astro';
 import SocialPill from '../components/SocialPill.astro';
 import GitHubIcon from '../components/icons/GitHub.astro';
 import MailIcon from '../components/icons/Mail.astro';
-import AboutMeV2 from '../components/AboutMe.astro';
+import AboutMe from '../components/AboutMe.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro';
@@ -22,13 +22,11 @@ import cvIcon from '../components/Cv.astro';
   <main class="px-4">
 
     <!-- Presentación -->
-    <SectionContainer class="py-10 md:py-14">
-      <AboutMeV2>
+    <SectionContainer id="About" class="py-10 md:py-14">
+      <AboutMe>
         </slot>
-      </AboutMeV2>
+      </AboutMe>
     </SectionContainer>
-
-    <!-- Experiencia -->
     <SectionContainer id="Experience" class="py-8 md:py-12">
       <h2 class="text-3xl font-semibold mb-6 gap-x-3 flex items-center">
         <Briefcase class="size-7" />
